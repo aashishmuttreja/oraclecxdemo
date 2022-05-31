@@ -65,6 +65,19 @@ var getEmail = function() {
             }
           });
         });
+	
+	      // receive msg frm iframe
+        // have to do it this way because cross domain cannot read content from iframe
+        window.onmessage = function(event) {
+          //Form Submit Success
+          console.log(event.data);
+          if (event.data == 'Form Submit Success') {
+            //disable submit button
+            $('button[type="submit"]').attr('disabled', 'true');
+            //show success
+            $('button[type="submit"]').text('Done');
+          }
+        };
 	  </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
