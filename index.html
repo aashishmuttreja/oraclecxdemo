@@ -22,6 +22,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   border: 3px solid green;
 }
 </style>
+<script>
+var getEmail = function() {
+        if (localStorage.email) {
+          return localStorage.email;
+        }
+        return 'ANONYMOUS';
+      };
+
+      var getMobile = function() {
+        if (localStorage.mobile) {
+          return localStorage.mobile;
+        }
+        return 'ANONYMOUS';
+      };
+     var refresh = function() {
+        localStorage.email = ''; // clear it
+        localStorage.firstname = ''; // clear it
+        localStorage.lastname = ''; // clear it
+        localStorage.mobile = ''; // clear it
+		location.reload();
+      }
+
+      setTimeout(function() {
+      	$("#EMAIL_ADDRESS_").val(getEmail());
+      	$("#FIRST_NAME").val(localStorage.firstname ? localStorage.firstname : '');
+        $("#LAST_NAME").val(localStorage.lastname ? localStorage.lastname : '');
+        $("#MOBILE_NUMBER_").val(localStorage.mobile ? localStorage.mobile : '');
+      }, 3000);
+	  
+	        //whatsapp
+        $("#btn_whatsapp").off().click(function(event) {
+        	event.preventDefault();
+        	event.stopPropagation(); // prevent the a.product-link event triggered so you only have 1 event triggered instead of 2
+          
+          ORA.click({
+            "sendSessionInfo": true,
+            "data": {
+              "ora.z_action": "whatsapp",
+              "ora.z_email": getEmail(), 
+              "ora.z_mobile": getMobile()
+            }
+          });
+        });
+	  </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -55,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <span>Suspendisse laoreet magna vel diam lobortis imperdiet</span>
+            <span>This page is for CX Demo created by India CX Team</span>
           </div>
         </div>
       </div>
@@ -64,7 +108,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
       <div class="container">
-        <a class="navbar-brand" href="#"><img src="assets/images/header-logo.png" alt=""></a>
+        <a class="navbar-brand" href="#"><img src="https://bluemedora.com/wp-content/uploads/2018/02/Logo-Oracle.png" alt="" width="300"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -193,47 +237,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Featred Ends Here -->
 
 
-    <!-- Subscribe Form Starts Here -->
-    <div class="subscribe-form">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <div class="line-dec"></div>
-              <h1>Subscribe on PIXIE now!</h1>
-            </div>
-          </div>
-          <div class="col-md-8 offset-md-2">
-            <div class="main-content">
-              <p>Integer vel turpis ultricies, lacinia ligula id, lobortis augue. Vivamus porttitor dui id dictum efficitur. Phasellus vel interdum elit.</p>
-              <div class="container">
-                <form id="subscribe" action="" method="get">
-                  <div class="row">
-                    <div class="col-md-7">
-                      <fieldset>
-                        <input name="email" type="text" class="form-control" id="email" 
-                        onfocus="if(this.value == 'Your Email...') { this.value = ''; }" 
-                    	onBlur="if(this.value == '') { this.value = 'Your Email...';}"
-                    	value="Your Email..." required="">
-                      </fieldset>
-                    </div>
-                    <div class="col-md-5">
-                      <fieldset>
-                        <button type="submit" id="form-submit" class="button">Subscribe Now!</button>
-                      </fieldset>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Subscribe Form Ends Here -->
-
   <!-- Subscribe Form Starts Here -->
-    <div class="row" style="margin-right: inherit; margin-left: inherit;"align="center">
+    <div class="rownew" style="margin-right: inherit; margin-left: inherit;"align="center">
 <h2>Please enter your information:</h2>
 		<div id="top-links" class="nav" align="center">  
 			<div class="wrap form-popup" id="myForm" align="center">
@@ -273,7 +278,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</script>
 		</div> <!-- end of toplinks -->
 	</div>
-
+	<style>
+.myForm {
+  text-align: center;
+  border: 1px solid green;
+}
+</style>
     <!-- Subscribe Form Ends Here -->
 
     <!-- Whatsapp starts Here -->
@@ -302,14 +312,39 @@ function myFunction() {
 }
 </style>
 <!-- Whatsapp Ends Here -->
-    
+<!-- Adbandonment and Purchase button Starts Here -->
+<div class="col-sm" align="center">
+        <div id="cart1" class="btn-group btn-block" align="center">
+          <button id="cartBtn" type="button" class="btn btn-inverse btn-block btn-lg dropdown-toggle"> 
+            <span id="cart-total">
+              Simulate Abandon
+            </span>
+          </button>
+
+</div>
+<br>
+        <div id="cart1" class="btn-group btn-block" align="center">
+          <button id="purchaseBtn" type="button" class="btn btn-inverse btn-block btn-lg dropdown-toggle"> 
+            <span id="cart-total">
+              Purchase Confirmation
+            </span>
+          </button>
+
+</div>
+</div>   
+	<style>
+.col-sm {
+  text-align: center;
+}
+</style>
+<!-- Adbandonment and Purchase button Ends Here -->
     <!-- Footer Starts Here -->
     <div class="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="logo">
-              <img src="assets/images/header-logo.png" alt="">
+              <img src="https://bluemedora.com/wp-content/uploads/2018/02/Logo-Oracle.png" alt="" width="300">
             </div>
           </div>
           <div class="col-md-12">
